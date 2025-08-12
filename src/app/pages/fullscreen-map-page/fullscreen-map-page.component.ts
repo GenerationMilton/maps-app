@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, ElementRef, viewChild } from '@angular/core';
 
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
+
 
 mapboxgl.accessToken = environment.mapboxKey;
 
@@ -12,7 +13,7 @@ mapboxgl.accessToken = environment.mapboxKey;
   styles: `
   div{
     width: 100vw;
-    height: 100vh;
+    height: calc( 100vh - 64px );
   }
   `,
 })
@@ -24,7 +25,7 @@ export class FullscreenMapPageComponent implements AfterViewInit {
   async ngAfterViewInit() {
     if (!this.divElement()?.nativeElement) return;
 
-    await new Promise((resolve) => setTimeout(() => resolve, 80));
+    //await new Promise((resolve) => setTimeout(() => resolve, 80));
 
     const element = this.divElement()!.nativeElement;
     console.log(element);
