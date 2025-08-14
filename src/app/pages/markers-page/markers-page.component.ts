@@ -94,4 +94,15 @@ export class MarkersPageComponent implements AfterViewInit{
     });
   }
 
+  //delete markers
+  deleteMarker(marker: Marker){
+    if(!this.map()) return;
+    const map = this.map()!;
+
+    marker.mapboxMarker.remove();
+
+    this.markers.set(this.markers().filter(m => m.id != marker.id));
+
+  }
+
  }
